@@ -7,16 +7,6 @@ using UnityEngine;
 namespace Game.System.Core
 {
     /// <summary>
-    /// Represents a single localization entry with key-value pair
-    /// </summary>
-    [Serializable]
-    public class LocalizationEntry
-    {
-        public string key;
-        public string value;
-    }
-
-    /// <summary>
     /// Main localization manager that handles loading and managing language files from XML
     /// Supports multiple languages with dynamic switching
     /// </summary>
@@ -36,7 +26,7 @@ namespace Game.System.Core
 
         #region Private Fields
         private Dictionary<string, string> localizedText;
-        private string currentLanguage = "vi";
+        private string currentLanguage = "en";
         private bool isLoaded = false;
         #endregion
 
@@ -105,23 +95,31 @@ namespace Game.System.Core
                 // Parse all entry nodes
                 XmlNodeList entries = xmlDoc.SelectNodes("//localization/entry");
 
+                Debug.Log($"[Localization] Found {entries.Count} entries in XML");
+
                 foreach (XmlNode entryNode in entries)
                 {
                     string key = entryNode.Attributes["key"]?.Value;
                     string value = entryNode.InnerText;
 
+                    // Trim whitespace from key and value
                     if (!string.IsNullOrEmpty(key))
                     {
+                        key = key.Trim();
+                        value = value?.Trim() ?? "";
+
                         localizedText[key] = value;
+
+                        // Debug each entry
+                        Debug.Log($"[Localization] Loaded key: '{key}' = '{value}'");
                     }
                 }
 
                 isLoaded = true;
-                Debug.Log($"Localization loaded {localizedText.Count} entries for language: {languageCode}");
             }
             catch (Exception e)
             {
-                Debug.LogError($"Localization error loading language file: {e.Message}");
+                Debug.LogError($"[Localization] Error loading language file: {e.Message}\nStack: {e.StackTrace}");
                 isLoaded = false;
             }
         }
@@ -140,13 +138,16 @@ namespace Game.System.Core
                 return key;
             }
 
+            // Trim key to avoid whitespace issues
+            key = key?.Trim() ?? "";
+
             if (localizedText.ContainsKey(key))
             {
                 return localizedText[key];
             }
             else
             {
-                Debug.LogWarning($"[Localization] Key not found: {key}");
+                Debug.LogWarning($"[Localization] Key not found: '{key}' | Available keys: {string.Join(", ", localizedText.Keys)}");
                 return key;
             }
         }
@@ -192,18 +193,17 @@ namespace Game.System.Core
         /// </summary>
         public bool HasKey(string key)
         {
-            return isLoaded && localizedText.ContainsKey(key);
+            return isLoaded && localizedText.ContainsKey(key?.Trim() ?? "");
         }
         #endregion
     }
-
-    /// <summary>
-    /// Component to automatically localize UI Text elements
-    /// Supports both Unity UI Text and TextMeshPro
-    /// </summary>
-
-    /// <summary>
-    /// Example usage of localization system
-    /// </summary>
-    
+        /// <summary>
+        /// Represents a single localization entry with key-value pair
+        /// </summary>
+        [Serializable]
+        public class LocalizationEntry
+        {
+            public string key;
+            public string value;
+        }
 }

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<localization>
+
+    <!-- COMMON NAVIGATION -->
+    <entry key="ok">OK</entry>
+    <entry key="cancel">Cancel</entry>
+    <entry key="apply">Apply</entry>
+    <entry key="close">Close</entry>
+    <entry key="confirm">Confirm</entry>
+    <entry key="decline">Decline</entry>
+    <entry key="next">Next</entry>
+    <entry key="previous">Previous</entry>
+    <entry key="submit">Submit</entry>
+    <entry key="save">Save</entry>
+    <entry key="delete">Delete</entry>
+    <entry key="edit">Edit</entry>
+    <entry key="view">View</entry>
+    <entry key="refresh">Refresh</entry>
+    <entry key="retry">Retry</entry>
+    <entry key="open">Open</entry>
+    <entry key="download">Download</entry>
+    <entry key="upload">Upload</entry>
+    <entry key="search">Search</entry>
+    <entry key="completed">Completed</entry>
+    <entry key="failed">Failed</entry>
+    <entry key="success">Success</entry>
+    <entry key="updated">Updated</entry>
+    <entry key="update_failed">Update failed</entry>
+    <entry key="saving">Saving...</entry>
+    <entry key="saving_failed">Saving failed</entry>
+    <entry key="title">Title</entry>
+    <entry key="description">Description</entry>
+    <entry key="name">Name</entry>
+    <entry key="email">Email</entry>
+    <entry key="phone">Phone</entry>
+    <entry key="address">Address</entry>
+    <entry key="date">Date</entry>
+    <entry key="time">Time</entry>
+    <entry key="status">Status</entry>
+    <entry key="more">More</entry>
+    <entry key="less">Less</entry>
+    <entry key="expand">Expand</entry>
+    <entry key="collapse">Collapse</entry>
+    <entry key="enabled">Enabled</entry>
+    <entry key="disabled">Disabled</entry>
+    <entry key="visible">Visible</entry>
+    <entry key="hidden">Hidden</entry>
+    <entry key="active">Active</entry>
+    <entry key="inactive">Inactive</entry>
+
+    <entry key="pr">Welcome to my presentation</entry>
+
+</localization>

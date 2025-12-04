@@ -1,22 +1,37 @@
 using Game.System.Core;
+using System;
+using UnityEditor.Experimental;
+using UnityEditor.Localization.Editor;
 using UnityEngine;
 
-public class LocalizationExample : Sys_Components
+namespace Game.System.Core
 {
-    protected override void Init()
+    /// <summary>
+    /// Example usage of localization system
+    /// </summary>
+    public class LocalizationExample : Sys_Components
     {
-        string welcomeText = Sys_Localization.Instance.GetLocalizedValue("welcome_message");
-        Debug.Log(welcomeText);
-        string greetingText = Sys_Localization.Instance.GetLocalizedValue("greeting", "Player1");
-        Debug.Log(greetingText);
-        if (Sys_Localization.Instance.HasKey("start_button"))
+        protected override void Init()
         {
-            Debug.Log("Start button text found");
-        }
-    }
+            // Get simple localized text
+            string welcomeText = Sys_Localization.Instance.GetLocalizedValue("welcome_message");
+            Debug.Log(welcomeText);
 
-    public void OnLanguageButtonClicked(string languageCode)
-    {
-        Sys_Localization.Instance.ChangeLanguage(languageCode);
+            // Get localized text with parameters
+            string greetingText = Sys_Localization.Instance.GetLocalizedValue("greeting", "Player1");
+            Debug.Log(greetingText);
+
+            // Check if key exists
+            if (Sys_Localization.Instance.HasKey("start_button"))
+            {
+                Debug.Log("Start button text found");
+            }
+        }
+
+        public void OnLanguageButtonClicked(string languageCode)
+        {
+            // Change language
+            Sys_Localization.Instance.ChangeLanguage(languageCode);
+        }
     }
 }
