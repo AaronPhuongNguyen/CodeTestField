@@ -1,6 +1,6 @@
 using System;
 using UnityEngine;
-namespace Game.System.Components
+namespace Game.System.Core
 {
 	[DefaultExecutionOrder(-99)]
 	public class Sys_Components : MonoBehaviour
